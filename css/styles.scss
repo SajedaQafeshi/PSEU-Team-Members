@@ -1,0 +1,39 @@
+$background-color:#2D89E6;
+$header-color:#fff;
+$font-header:sans-serif;
+
+html ,body,.root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.root{
+    display: flex;
+    flex-direction: column; 
+}
+
+.header-bar {
+    width: 100%;
+    height: 76px;
+    text-align: center;
+    background: $background-color;
+    color: $header-color;
+    padding: 10px;
+    font-family: $font-header;
+}
+
+.content{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-self: center;
+}
+
+.form-bar{
+
+}
+
+.menu-bar{
+    
+}
