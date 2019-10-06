@@ -1,6 +1,11 @@
 $background-color:#2D89E6;
 $header-color:#fff;
 $font-header:sans-serif;
+$border-color:#C3C3C3;
+
+* {
+    box-sizing: border-box;
+}
 
 html ,body,.root {
     width: 100%;
@@ -8,7 +13,7 @@ html ,body,.root {
     margin: 0;
 }
 
-.root{
+.root {
     display: flex;
     flex-direction: column; 
 }
@@ -23,17 +28,92 @@ html ,body,.root {
     font-family: $font-header;
 }
 
-.content{
+.content {
     width: 90%;
     height: 100%;
     display: flex;
     align-self: center;
+    margin-top: 40px;
 }
 
-.form-bar{
-
+.form-bar {
+    width: 30%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid $border-color; 
+    border-radius: 32px;
+    margin-bottom: 20px;
 }
 
-.menu-bar{
+.form-bar form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    position: relative;
     
+}
+
+.form-bar form h1 {
+    align-self: center;
+    font-family: $font-header;
+    color: #707070;
+    font-size: 22px;
+}
+
+.input-item {
+    width: 90%;
+    height: 66px ;
+    border: 1px solid $border-color;
+    margin-top: 5px;
+    border-radius: 12px;
+    padding-left: 15px;
+    font-size: 16px;
+    align-self: center;
+}
+
+input:focus {
+    border: 1px solid $border-color;
+    border-radius: 12px;
+}
+
+.input-item:nth-child(6) {
+    min-width: 90%;
+    min-height: 270px;
+    max-width: 90%;
+    max-height: 270px;
+    padding: 15px;
+}
+
+.form-bar form button {
+    width: 100%;
+    height: 79px;
+    font-family: $font-header;
+    color: #fff;
+    background: $background-color;
+    border: none;
+    border-radius: 0px 0px 32px 32px; 
+    position: absolute;
+    bottom: 0;
+    font-size: 22px;
+}
+
+.checkbox-side {
+    margin-top: 10px;
+    width: 90%;
+    align-self: center;
+}
+
+.input-index {
+    width: 15%;
+    border: 1px solid $border-color;
+}
+
+.menu-bar {
+    width: 70%;
+    height: 100%;
+    background: #F6F6F6;
 }
