@@ -26,6 +26,9 @@ html ,body,.root {
     color: $header-color;
     padding: 10px;
     font-family: $font-header;
+    h1{
+        margin-top: 10px;
+    }
 }
 
 .content {
@@ -33,7 +36,8 @@ html ,body,.root {
     height: 100%;
     display: flex;
     align-self: center;
-    margin-top: 40px;
+    
+    
 }
 
 .form-bar {
@@ -44,6 +48,7 @@ html ,body,.root {
     border: 1px solid $border-color; 
     border-radius: 32px;
     margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 .form-bar form {
@@ -75,8 +80,7 @@ html ,body,.root {
     align-self: center;
 }
 
-input:focus {
-    border: 1px solid $border-color;
+.input-item[type=text]:focus {
     border-radius: 12px;
 }
 
@@ -113,7 +117,89 @@ input:focus {
 }
 
 .menu-bar {
-    width: 70%;
+    width: 61.5%;
     height: 100%;
     background: #F6F6F6;
+    position: fixed;
+    left: 34%;
+    div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+
+}
+
+.left-nav {
+    width:60% ;
+    height: 45px;
+    background: $background-color;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 0px 23px 23px 0px;
+    margin-top: 30px;
+    font-family: $font-header;
+    label {
+        margin-right: 10px;
+        margin-left: 15px;
+        height: 79%;
+        padding-top: 10px;
+    } 
+
+    div {
+        width: 15%;
+        height: 79%;
+        align-items: center;
+    }
+
+    div select {
+        border-radius: 5px;
+        padding-left: 15px;
+        font-size: 16px;
+        height: 21px;
+        border: 1px solid $border-color;
+        margin-left: 15px;
+        width: 100%;
+        align-items: center;
+    }
+
+    input {
+        border-radius: 5px;
+        border: 1px solid $border-color;
+        height: 21px;
+    }
+    
+}
+
+.left-nav div:nth-child(2) {
+    margin-right:10px; 
+}
+
+.left-nav div:nth-child(3) {
+    border-left: 1px solid #fff;
+}
+
+.left-nav div:nth-child(4) {
+    padding-right:10px; 
+    border-right: 1px solid #fff;
+    margin-right: 10px;
+}
+
+
+.right-nav {
+    width:10% ;
+    height: 45px;
+    background: $background-color;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 23px 0px 0px 23px;
+    margin-top: 30px;
+    font-family: $font-header;
+    justify-content: center;
+    h1 {
+        font-weight: normal;
+    }
 }
