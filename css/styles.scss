@@ -203,3 +203,48 @@ html ,body,.root {
         font-weight: normal;
     }
 }
+
+.member-class {
+    display: flex;
+    flex-direction: column;
+    height: 111px;
+    width: 100%;
+}
+
+.member-item {
+    display: flex;
+    width: 100%;
+}
+
+.member-remove {
+    width: 10% !important;
+    button {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #FF4A4A;
+        border: none;
+        color: #fff;
+        font-size: 30px;
+        align-self: center;
+    }
+}
+
+.member-data {
+    display: flex;
+    flex-direction: column;
+    width: 90% !important;
+    font-family: $font-header;
+
+    h1 {
+        
+    }
+
+    h3 {
+
+    }
+
+    p {
+        
+    }
+}
