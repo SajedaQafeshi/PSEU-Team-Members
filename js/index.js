@@ -10,7 +10,9 @@ let major = document.getElementById('major');
 let role = document.getElementById('role');
 let biography = document.getElementById('biography');
 let newBtn = document.getElementById('save');
+let indexAdd = document.getElementById('indexAdd').value;
 let members =JSON.parse(localStorage.getItem('memberlist'));
+let time = new Date();
 
 close.onclick = function () {
     modal.style.display = "none";
@@ -21,7 +23,10 @@ cancel.onclick = function () {
 }
 
 window.onload = function () {
-    membersf(JSON.parse(localStorage.getItem('memberlist')));
+    if (members == null) {
+        members =[];
+    }
+    membersf(members);
     document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";
 }
 
@@ -29,22 +34,38 @@ newBtn.onclick = function () {
 
     if (name.value != "" && email.value != "" && major.value != "" &&
     role.value != "" && biography.value != "" ) {
-        members.push({
-            name: name.value,
-            email:email.value,
-            major:major.value,
-            role:role.value,
-            Biography:biography.value
-        });
-        localStorage.setItem('memberlist',JSON.stringify(members));
-        
-        name.value = "";
-        email.value = "";
-        major.value = "";
-        role.value = "";
-        biography.value = "";
-        membersf(JSON.parse(localStorage.getItem('memberlist')));
-        document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";
+        if (indexAdd != "") {
+            members.splice(indexAdd, 0, {
+                name: name.value,
+                email:email.value,
+                major:major.value,
+                role:role.value,
+                Biography:biography.value,
+                time:time.getTime
+            });
+        } else {
+            members.push({
+                name: name.value,
+                email:email.value,
+                major:major.value,
+                role:role.value,
+                Biography:biography.value,
+                time:time.getTime
+            });
+        }
+        if (members.find(member => member.email == email.value) == []) {
+
+            localStorage.setItem('memberlist',JSON.stringify(members));
+            name.value = "";
+            email.value = "";
+            major.value = "";
+            role.value = "";
+            biography.value = "";
+            membersf(JSON.parse(localStorage.getItem('memberlist')));
+            document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";
+        } else{
+            alert("pleace add another Email");
+        }
     }
     else{
         alert("pleace add all attribute");
@@ -110,19 +131,24 @@ function deleteMember(email) {
 }
 
 function updateMember(email) {
-    members.forEach(function (member) {
-        if (member.email == email) {
-            member.email = document.getElementById('modalEmail').value;
-            member.name =document.getElementById('modalName').value;
-            member.major =document.getElementById('modalMajor').value;
-            member.role =document.getElementById('modalRole').value;
-            member.Biography =document.getElementById('modalBio').value;
-        }
-    });
-    localStorage.setItem('memberlist',JSON.stringify(members));
-    membersf(JSON.parse(localStorage.getItem('memberlist')));
-    Modal(document.getElementById('modalEmail').value);
-    modal.style.display = "none";
+    if (members.find(member => member.email == email) == null) {
+        
+        members.forEach(function (member) {
+            if (member.email == email) {
+                member.email = document.getElementById('modalEmail').value;
+                member.name =document.getElementById('modalName').value;
+                member.major =document.getElementById('modalMajor').value;
+                member.role =document.getElementById('modalRole').value;
+                member.Biography =document.getElementById('modalBio').value;
+            }
+        });
+        localStorage.setItem('memberlist',JSON.stringify(members));
+        membersf(JSON.parse(localStorage.getItem('memberlist')));
+        Modal(document.getElementById('modalEmail').value);
+        modal.style.display = "none";
+    } else {
+        alert("pleace add another Email");
+    }
 }
 
 function sortMember() {
@@ -149,27 +175,6 @@ function sortMember() {
     }
 }
 
-function majorFilter() {
-    let majorValue = document.getElementById('major-filter').value; 
-    let memberList = members.filter(function (member) {
-        return member.major == majorValue;
-    });
-    membersf(memberList);
-    document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";
-}
-
-
-function roleFilter() {
-    let roleValue = document.getElementById('role-filter').value; 
-    let memberList = members.filter(function (member) {
-        return member.role == roleValue;
-    });
-    membersf(memberList);
-    document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";
-
-}
-
-
 function search() {
     let charSearch = document.getElementById('search').value;
     let memberList = members.filter(function (member) {
@@ -178,3 +183,27 @@ function search() {
     membersf(memberList);
     document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";
 }
+
+function Filter() {
+    let majorValue = document.getElementById('major-filter').value; 
+    let roleValue = document.getElementById('role-filter').value;
+    let memberList;
+
+    if (roleValue == "" ) {
+        memberList = members.filter(function (member) {
+            return member.major == majorValue;
+        });
+    } else if (majorValue == "") {
+        memberList = members.filter(function (member) {
+            return member.role == roleValue;
+        });
+    } else{
+        memberList = members.filter(function (member) {
+            return (member.role == roleValue && member.major == majorValue);
+        });
+    }
+    membersf(memberList);
+    document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";
+    
+}
+

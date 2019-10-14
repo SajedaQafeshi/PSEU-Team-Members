@@ -3,7 +3,6 @@
     <head>
         <link rel="stylesheet" href="css/styles.css">
     </head>
-
     <body>
         <div class="root">
             <header class="header-bar">
@@ -29,11 +28,11 @@
                             <option value="Full-Stack Developer">Full-Stack Developer</option>
                             <option value=" UI/UX Designer"> UI/UX Designer</option>
                         </select>
-                        <textarea name="" id="biography" cols="30" rows="10" placeholder="Biography" class="input-item"></textarea>
+                        <textarea name="" id="biography" cols="30" rows="10" maxlength="1500" minlength="500" placeholder="Biography" class="input-item"></textarea>
                         <div class="checkbox-side">
                            <input type="checkbox" class="checkbox-itme"> 
                            <label for="">Add to bottom / or at index</label>
-                           <input type="text" class="input-index">
+                           <input type="number" class="input-index" id="indexAdd">
                         </div>
                         <button id="save" type="button">SAVE</button>
                     </form>
@@ -52,7 +51,7 @@
                                 </select>
                             </div>
                             <div>
-                                <select name="" id="major-filter" onchange="majorFilter()">
+                                <select name="" id="major-filter" onchange="Filter()">
                                     <option value="" disabled selected style="display: none;">Major</option>
                                     <option value="Computer Science">Computer Science</option>
                                     <option value="Computer Engineering">Computer Engineering</option>
@@ -61,7 +60,7 @@
                                 </select>
                             </div>
                             <div>
-                                <select name="" id="role-filter" onchange="roleFilter()">
+                                <select name="" id="role-filter" onchange="Filter()">
                                     <option value="" disabled selected style="display: none;">Role</option>
                                     <option value="Front-End Developer">Front-End Developer</option>
                                     <option value="Back-End Developer">Back-End Developer</option>
