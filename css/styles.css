@@ -32,6 +32,7 @@ html, body, .root {
 
 .header-bar h1 {
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .content {
@@ -46,7 +47,7 @@ html, body, .root {
 
 .form-bar {
   width: 30%;
-  height: 95%;
+  height: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -88,9 +89,9 @@ html, body, .root {
 
 .input-item {
   width: 90%;
-  height: 66px;
+  height: 50px;
   border: 1px solid #C3C3C3;
-  margin-top: 5px;
+  margin-top: 10px;
   border-radius: 12px;
   padding-left: 15px;
   font-size: 16px;
@@ -250,13 +251,13 @@ html, body, .root {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 111px;
   width: 100%;
-  height: 100%;
+  height: 807px;
   margin-top: 10px;
   -webkit-box-pack: start !important;
       -ms-flex-pack: start !important;
           justify-content: flex-start !important;
+  overflow: scroll;
 }
 
 .member-item {
@@ -264,7 +265,7 @@ html, body, .root {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 15%;
+  height: 150px;
   margin-bottom: 10px;
 }
 
@@ -292,6 +293,7 @@ html, body, .root {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  cursor: pointer;
 }
 
 .member-data {
@@ -407,6 +409,7 @@ html, body, .root {
 .modal-close:hover {
   background: #808080;
   color: #000;
+  cursor: pointer;
 }
 
 .modal-body {
@@ -432,7 +435,6 @@ html, body, .root {
 .modal-header {
   width: 100%;
   height: 25%;
-  font-size: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -444,12 +446,16 @@ html, body, .root {
           justify-content: center;
 }
 
-.modal-header h1 {
+.modal-header input {
   margin: 0;
+  font-size: 81px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
 }
 
 .modal-data {
-  width: 100%;
+  width: 50%;
   height: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -457,15 +463,29 @@ html, body, .root {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.modal-data a {
+.modal-data input {
   text-decoration: none;
   color: #2D89E6;
   font-size: 14px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-data select {
+  border-radius: 5px;
+  border-color: #C3C3C3;
+  color: #2D89E6;
+  cursor: pointer;
+}
+
+.modal-data div::before {
+  content: "/";
+  color: #2D89E6;
 }
 
 .modal-detail {
@@ -498,13 +518,24 @@ html, body, .root {
 
 .btn-delete {
   background: #FF4A4A;
+  cursor: pointer;
 }
 
 .btn-save {
   background: #2D89E6;
+  cursor: pointer;
 }
 
 .btn-cancel {
   background: #484848;
+  cursor: pointer;
+}
+
+.modal-textarea {
+  width: 100%;
+  border: none;
+  text-align: center;
+  font-size: 24px;
+  color: #6A6A6A;
 }
 /*# sourceMappingURL=styles.css.map */

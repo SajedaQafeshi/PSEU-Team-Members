@@ -7,35 +7,35 @@
     <body>
         <div class="root">
             <header class="header-bar">
-                <h1>PSEU Team Memebers</h1>
+                <h1 onclick="defaultFun()">PSEU Team Memebers</h1>
             </header>
             <section class="content">
                 <article class="form-bar">
                     <form action="">
                         <h1>Add new member</h1>
-                        <input type="text" placeholder="Name" class="input-item">
-                        <input type="text" placeholder="Email" class="input-item">
-                        <select name="" id="" class="input-item">
-                            <option value="" disabled selected style="color: #AEAEAE;">Major</option>
+                        <input type="text" placeholder="Name" class="input-item" id="name">
+                        <input type="text" placeholder="Email" class="input-item" id="email">
+                        <select name="" id="major" class="input-item">
+                            <option value="" disabled selected>Major</option>
                             <option value="Computer Science">Computer Science</option>
                             <option value="Computer Engineering">Computer Engineering</option>
                             <option value="Information Technology">Information Technology</option>
                             <option value="Information System">Information System</option>
                         </select>
-                        <select name="" id="" class="input-item">
+                        <select name="" id="role" class="input-item">
                             <option value="" disabled selected>Role</option>
                             <option value="Front-End Developer">Front-End Developer</option>
                             <option value="Back-End Developer">Back-End Developer</option>
                             <option value="Full-Stack Developer">Full-Stack Developer</option>
                             <option value=" UI/UX Designer"> UI/UX Designer</option>
                         </select>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Biography" class="input-item"></textarea>
+                        <textarea name="" id="biography" cols="30" rows="10" placeholder="Biography" class="input-item"></textarea>
                         <div class="checkbox-side">
                            <input type="checkbox" class="checkbox-itme"> 
                            <label for="">Add to bottom / or at index</label>
                            <input type="text" class="input-index">
                         </div>
-                        <button>SAVE</button>
+                        <button id="save" type="button">SAVE</button>
                     </form>
                 </article>
                 <article class="menu-bar" class="">
@@ -43,16 +43,17 @@
                         <nav class="left-nav">
                             <label>SORT BY</label>
                             <div>
-                                <select name="" id="">
-                                    <option value="">A-Z</option>
-                                    <option value="">Z-A</option>
-                                    <option value="">Newest</option>
-                                    <option value="">Oldest</option>
+                                <select id="sort" onchange="sortMember()">
+                                    <option value="" disabled selected style="display: none;">Sort</option>
+                                    <option value="1">A-Z</option>
+                                    <option value="2">Z-A</option>
+                                    <option value="3">Newest</option>
+                                    <option value="4">Oldest</option>
                                 </select>
                             </div>
                             <div>
-                                <select name="" id="">
-                                    <option value="" disabled selected style="color: #AEAEAE;">Major</option>
+                                <select name="" id="major-filter" onchange="majorFilter()">
+                                    <option value="" disabled selected style="display: none;">Major</option>
                                     <option value="Computer Science">Computer Science</option>
                                     <option value="Computer Engineering">Computer Engineering</option>
                                     <option value="Information Technology">Information Technology</option>
@@ -60,65 +61,21 @@
                                 </select>
                             </div>
                             <div>
-                                <select name="" id="">
-                                    <option value="" disabled selected>Role</option>
+                                <select name="" id="role-filter" onchange="roleFilter()">
+                                    <option value="" disabled selected style="display: none;">Role</option>
                                     <option value="Front-End Developer">Front-End Developer</option>
                                     <option value="Back-End Developer">Back-End Developer</option>
                                     <option value="Full-Stack Developer">Full-Stack Developer</option>
                                     <option value=" UI/UX Designer"> UI/UX Designer</option>
                                 </select> 
                             </div>
-                            <input type="search" placeholder="Search by name ...">
+                            <input type="search" id="search" oninput="search()" placeholder="Search by name ...">
                         </nav>
                         <nav class="right-nav">
-                            <h1>15 ITEMS</h1>
+                            <h1 id="itemNumber"></h1>
                         </nav>
                     </div>
-                    <div class="member-class">
-                        <div class="member-item">
-                            <div class="member-remove">
-                                <button>&#45;</button>
-                            </div>
-                            <div class="member-data">
-                                <h1 id="modalLink">Faris Abu4ram</h1>
-                                <h3>faris@pseu.com / Information Technology / Front-End Developer</h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                    </p>
-                            </div>
-                        </div>
-                        <div class="member-item">
-                            <div class="member-remove">
-                                <button>&#45;</button>
-                            </div>
-                            <div class="member-data">
-                                <h1 id="modalLink">Faris Abu4ram</h1>
-                                <h3>faris@pseu.com / Information Technology / Front-End Developer</h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                    </p>
-                            </div>
-                        </div>
-                        <div class="member-item">
-                            <div class="member-remove">
-                                <button>&#45;</button>
-                            </div>
-                            <div class="member-data">
-                                <h1 id="modalLink">Faris Abu4ram</h1>
-                                <h3>faris@pseu.com / Information Technology / Front-End Developer</h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                    </p>
-                            </div>
-                        </div>
-                        <div class="member-item">
-                            <div class="member-remove">
-                                <button>&#45;</button>
-                            </div>
-                            <div class="member-data">
-                                <h1 id="modalLink">Faris Abu4ram</h1>
-                                <h3>faris@pseu.com / Information Technology / Front-End Developer</h3>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                    </p>
-                            </div>
-                        </div>
+                    <div id="member-list" class="member-class">
                     </div>
                 </article>
             </section>
@@ -130,27 +87,40 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-header">
-                        <h1>Faris Abu3ram</h1>
+                        <input id="modalName">
                     </div>
                     <div class="modal-data">
-                        <a href="">faris@pseu.com /</a>
-                        <a href=""> Information Technology  /</a>
-                        <a href="">Front-End Developer</a>
+                        <input type="text" value="" id="modalEmail"> 
+                        <div>
+                            <select name="" id="modalMajor">
+                                <option value="" disabled selected> </option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Computer Engineering">Computer Engineering</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Information System">Information System</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select name="" id="modalRole">
+                                <option value="" disabled selected> </option>
+                                <option value="Front-End Developer">Front-End Developer</option>
+                                <option value="Back-End Developer">Back-End Developer</option>
+                                <option value="Full-Stack Developer">Full-Stack Developer</option>
+                                <option value=" UI/UX Designer"> UI/UX Designer</option>
+                            </select> 
+                        </div>
                     </div>
                     <div class="modal-detail">
-                        <p>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-
-
-                        </p>
+                        <textarea cols="30" rows="10" id="modalBio" class="modal-textarea"></textarea>
                     </div>
                     <div class="modal-btn">
-                        <button class="btn btn-delete">DELETE</button>
-                        <button class="btn btn-save">SAVE</button>
-                        <button class="btn btn-cancel">CANCEL</button>
+                        <button class="btn btn-delete" id="delete" onclick="deleteMember(document.getElementById('modalEmail').value)">DELETE</button>
+                        <button class="btn btn-save" id="save" onclick="updateMember(document.getElementById('originalEmail').innerHTML)">SAVE</button>
+                        <button class="btn btn-cancel" id="cancel">CANCEL</button>
                     </div>
                 </div>
             </div>
+            <p style="display: none;" id="originalEmail"></p>
         </div>
         <script src="js/index.js"></script>
     </body>
