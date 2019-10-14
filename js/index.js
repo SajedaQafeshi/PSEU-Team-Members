@@ -12,7 +12,7 @@ let biography = document.getElementById('biography');
 let newBtn = document.getElementById('save');
 let indexAdd = document.getElementById('indexAdd').value;
 let members =JSON.parse(localStorage.getItem('memberlist'));
-let time = new Date();
+
 
 close.onclick = function () {
     modal.style.display = "none";
@@ -34,26 +34,27 @@ newBtn.onclick = function () {
 
     if (name.value != "" && email.value != "" && major.value != "" &&
     role.value != "" && biography.value != "" ) {
-        if (indexAdd != "") {
-            members.splice(indexAdd, 0, {
-                name: name.value,
-                email:email.value,
-                major:major.value,
-                role:role.value,
-                Biography:biography.value,
-                time:time.getTime
-            });
-        } else {
-            members.push({
-                name: name.value,
-                email:email.value,
-                major:major.value,
-                role:role.value,
-                Biography:biography.value,
-                time:time.getTime
-            });
-        }
-        if (members.find(member => member.email == email.value) == []) {
+        if (members.find(member => member.email == email.value) == undefined) {
+            let time = new Date();
+            if (indexAdd != "") {
+                members.splice(indexAdd, 0, {
+                    name: name.value,
+                    email:email.value,
+                    major:major.value,
+                    role:role.value,
+                    Biography:biography.value,
+                    time:time.getDate() + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
+                });
+            } else {
+                members.push({
+                    name: name.value,
+                    email:email.value,
+                    major:major.value,
+                    role:role.value,
+                    Biography:biography.value,
+                    time:time.getDate() + time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
+                });
+            }
 
             localStorage.setItem('memberlist',JSON.stringify(members));
             name.value = "";
@@ -131,7 +132,8 @@ function deleteMember(email) {
 }
 
 function updateMember(email) {
-    if (members.find(member => member.email == email) == null) {
+    if (email == document.getElementById('modalEmail').value ||
+      members.find(member => member.email == email) != undefined) {
         
         members.forEach(function (member) {
             if (member.email == email) {
@@ -148,30 +150,6 @@ function updateMember(email) {
         modal.style.display = "none";
     } else {
         alert("pleace add another Email");
-    }
-}
-
-function sortMember() {
-    let value = document.getElementById('sort').value;
-    if (value == 1) {
-        membersf(members.sort(function(a,b){
-            return (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0));
-          }));
-        document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";        
-    } else if (value == 2) {
-        membersf(members.sort(function(a,b){
-            return (a.name > b.name ? -1 : (a.name < b.name ? 1 : 0));
-          })); 
-        document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";        
-
-    } else if (value == 3){
-        membersf(JSON.parse(localStorage.getItem('memberlist')).reverse());  
-        document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";        
-
-    } else {
-        membersf(JSON.parse(localStorage.getItem('memberlist')));
-        document.getElementById('itemNumber').innerHTML = members.length + " ITEMS";        
-
     }
 }
 
@@ -193,17 +171,48 @@ function Filter() {
         memberList = members.filter(function (member) {
             return member.major == majorValue;
         });
+        sortFilter(memberList);
+
     } else if (majorValue == "") {
         memberList = members.filter(function (member) {
             return member.role == roleValue;
         });
+        sortFilter(memberList);
+
     } else{
         memberList = members.filter(function (member) {
             return (member.role == roleValue && member.major == majorValue);
         });
+        sortFilter(memberList);
     }
-    membersf(memberList);
     document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";
     
 }
 
+function sortFilter(memberList) {
+    let value = document.getElementById('sort').value;
+    if (value == 1) {
+        membersf(memberList.sort(function(a,b){
+            return (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0));
+          }));
+        document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";        
+    } else if (value == 2) {
+        membersf(memberList.sort(function(a,b){
+            return (a.name > b.name ? -1 : (a.name < b.name ? 1 : 0));
+          })); 
+        document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";        
+
+    } else if (value == 3){
+        membersf(memberList.sort(function(a,b){
+            return (a.time > b.time ? -1 : (a.time < b.time ? 1 : 0));
+          }));   
+        document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";        
+
+    } else {
+        membersf(memberList.sort(function(a,b){
+            return (a.time < b.time ? -1 : (a.time > b.time ? 1 : 0));
+          })); 
+        document.getElementById('itemNumber').innerHTML = memberList.length + " ITEMS";        
+
+    }
+}

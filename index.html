@@ -15,14 +15,14 @@
                         <input type="text" placeholder="Name" class="input-item" id="name">
                         <input type="text" placeholder="Email" class="input-item" id="email">
                         <select name="" id="major" class="input-item">
-                            <option value="" disabled selected>Major</option>
+                            <option value="" disabled selected style="display: none;">Major</option>
                             <option value="Computer Science">Computer Science</option>
                             <option value="Computer Engineering">Computer Engineering</option>
                             <option value="Information Technology">Information Technology</option>
                             <option value="Information System">Information System</option>
                         </select>
                         <select name="" id="role" class="input-item">
-                            <option value="" disabled selected>Role</option>
+                            <option value="" disabled selected style="display: none;">Role</option>
                             <option value="Front-End Developer">Front-End Developer</option>
                             <option value="Back-End Developer">Back-End Developer</option>
                             <option value="Full-Stack Developer">Full-Stack Developer</option>
@@ -42,7 +42,7 @@
                         <nav class="left-nav">
                             <label>SORT BY</label>
                             <div>
-                                <select id="sort" onchange="sortMember()">
+                                <select id="sort" onchange="Filter()">
                                     <option value="" disabled selected style="display: none;">Sort</option>
                                     <option value="1">A-Z</option>
                                     <option value="2">Z-A</option>
